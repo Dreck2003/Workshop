@@ -1,14 +1,18 @@
-import {Estado,Action} from '../../interfaces/interface';
+// import {Estado} from '../../interfaces/interface';
+import {combineReducers} from 'redux';
+import { userReducer } from './users';
 
-const initialState:Estado = {
-    counter:1,
+import {USER} from '../actions/interfaz';
+
+
+interface StateUser{
+    users:USER[]
 
 }
 
-const reducer=(state:Estado=initialState,action:Action) =>{
-    return state;
+export const reducers=combineReducers<StateUser>({
+    users:userReducer,
+})
 
-}
+export type State=ReturnType<typeof reducers>
 
-
-export default reducer;
